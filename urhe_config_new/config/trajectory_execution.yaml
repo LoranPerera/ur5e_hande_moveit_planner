@@ -1,0 +1,11 @@
+trajectory_execution:
+  # Scale factor applied to the expected trajectory duration before timing out.
+  # Increase this so MoveIt waits longer for the TCP gripper to respond.
+  allowed_execution_duration_scaling: 10.0
+
+  # Extra seconds added on top of the scaled duration as a safety margin.
+  allowed_goal_duration_margin: 15.0
+
+  # Set to false to disable strict execution time monitoring entirely.
+  # The bridge will still report success/failure via the action result.
+  execution_duration_monitoring: false

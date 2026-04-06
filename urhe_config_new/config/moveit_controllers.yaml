@@ -1,0 +1,32 @@
+# MoveIt uses this configuration for controller management
+# 
+# ur_control.launch.py spawns:  scaled_joint_trajectory_controller  (6 arm joints)
+# hande_bridge node serves:     hand_e_controller                   (1 gripper joint)
+#
+# MoveIt automatically splits 7-joint trajectories between these two controllers.
+
+moveit_controller_manager: moveit_simple_controller_manager/MoveItSimpleControllerManager
+
+moveit_simple_controller_manager:
+  controller_names:
+    - scaled_joint_trajectory_controller
+    - hand_e_controller
+
+  scaled_joint_trajectory_controller:
+    type: FollowJointTrajectory
+    action_ns: follow_joint_trajectory
+    default: true
+    joints:
+      - shoulder_pan_joint
+      - shoulder_lift_joint
+      - elbow_joint
+      - wrist_1_joint
+      - wrist_2_joint
+      - wrist_3_joint
+
+  hand_e_controller:
+    type: FollowJointTrajectory
+    action_ns: follow_joint_trajectory
+    default: true
+    joints:
+      - robotiq_hande_left_finger_joint
